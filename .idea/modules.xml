@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cardio-common-lib.iml" filepath="$PROJECT_DIR$/cardio-common-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cardio-support/cardio-support.iml" filepath="$PROJECT_DIR$/cardio-support/cardio-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feign-proxy/feign-proxy.iml" filepath="$PROJECT_DIR$/feign-proxy/feign-proxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jwt-token-component/jwt-token-component.iml" filepath="$PROJECT_DIR$/jwt-token-component/jwt-token-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-security/service-security.iml" filepath="$PROJECT_DIR$/service-security/service-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swagger-config/swagger-config.iml" filepath="$PROJECT_DIR$/swagger-config/swagger-config.iml" />
+    </modules>
+  </component>
+</project>

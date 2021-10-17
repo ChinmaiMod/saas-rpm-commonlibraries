@@ -1,0 +1,9 @@
+com\io\holter\decoder\CustomErrorDecoder.class
+com\io\holter\TokenPassthroughInterceptorProvider.class
+com\io\holter\pageble\PageableQueryEncoder.class
+com\io\holter\FeignFormEncoderConfig.class
+com\io\holter\pageble\FeignClientConfig.class
+com\io\holter\pageble\PageMixIn.class
+com\io\holter\decoder\FeignErrorDecoder.class
+com\io\holter\decoder\FeignResponseDecoder.class
+com\io\holter\FeignLocalDateFormatterConfig.class

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.io.holter:token-security:0.0.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/io/holter/token-security/0.0.1/token-security-0.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/io/holter/token-security/0.0.1/token-security-0.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/io/holter/token-security/0.0.1/token-security-0.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
