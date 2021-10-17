@@ -1,15 +1,9 @@
 package com.io.holter.common.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.netflix.client.ClientException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException;
@@ -17,8 +11,6 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.security.auth.login.CredentialExpiredException;
-import java.util.ArrayList;
-import java.util.List;
 
 @ControllerAdvice
 public class ValidationErrorControllerAdvice  {
@@ -66,13 +58,13 @@ public class ValidationErrorControllerAdvice  {
 
         return new ResponseEntity<>(validationError, new HttpHeaders(), validationError.getStatus());
     }
-    @ExceptionHandler(value = { ClientException.class })
+   /* @ExceptionHandler(value = { ClientException.class })
     protected ResponseEntity<Object> gateWayError(RuntimeException exception, WebRequest request) {
         String error = "Gateway Error";
         ValidationError validationError = new ValidationError(exception.getMessage(), HttpStatus.BAD_GATEWAY);
         validationError.addValidationError(error);
         return new ResponseEntity<>(validationError, new HttpHeaders(), validationError.getStatus());
-    }
+    }*/
     @ExceptionHandler(value = { CredentialExpiredException.class })
     protected ResponseEntity<Object> credentialExpireError(RuntimeException exception, WebRequest request) {
         String error = "Token Expired";
