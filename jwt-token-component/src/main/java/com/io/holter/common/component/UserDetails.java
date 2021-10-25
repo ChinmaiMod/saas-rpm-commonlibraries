@@ -59,5 +59,6 @@ public class UserDetails {
     private String notes;
 
     private String userPic     ;
+    private String countryCode;
 
 }

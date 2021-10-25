@@ -36,6 +36,7 @@ public class RendorProvidorDto {
     private String fax;
     private String address2;
     private String zipCode;
+    private String countryCode;
 
 
 }
