@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient( name = "gateway-intregration-service",url = "http://65.1.169.141:8090/bitr/")
+@FeignClient( name = "gateway-intregration-service",url = "http://15.207.253.86:8090/bitr/")
 //@RibbonClient(name = "apiintregration-service")
 public interface DeviceIntregrationClient {
 
