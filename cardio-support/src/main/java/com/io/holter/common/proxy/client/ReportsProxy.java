@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "gateway")
-@RibbonClient(name = "gateway")
+@FeignClient(name = "Gateway-device-service",url = "http://15.207.253.86:8090/bitr")
 public interface ReportsProxy {
-    @GetMapping("/bitr/generatedReports")
+    @GetMapping("/generatedReports")
     ResponseEntity<List<BitrhythmReportDto>> getBitrhytmReports(@RequestHeader("Autharization") String token, @RequestParam(name = "studyId") Long studyId);
 }
