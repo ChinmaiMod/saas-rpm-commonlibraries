@@ -24,7 +24,7 @@ import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @Configuration
-@ComponentScan(basePackages ={"com.io.holter.service.security"})
+@ComponentScan(basePackages ={"com.io.rpm.service.security"})
 @EnableWebSecurity
 public abstract class JwtTokenWebSecurityConfigureAdapter extends WebSecurityConfigurerAdapter {
 
