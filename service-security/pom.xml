@@ -20,7 +20,7 @@
         <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
-        <groupId>com.io.holter</groupId>
+        <groupId>com.io.rpm</groupId>
         <artifactId>jwt-token-component</artifactId>
         <exclusions>
             <exclusion>

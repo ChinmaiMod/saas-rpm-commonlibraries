@@ -19,7 +19,7 @@
         <scope>compile</scope>
     </dependency>
     <dependency>
-        <groupId>com.io.holter</groupId>
+        <groupId>com.io.rpm</groupId>
         <artifactId>jwt-token-component</artifactId>
         <version>0.0.1</version>
     </dependency>
