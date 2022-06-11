@@ -16,10 +16,10 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.io.holter</groupId>
-    <artifactId>cardio-common-lib</artifactId>
+    <groupId>com.io.rpm</groupId>
+    <artifactId>rpm-common-lib</artifactId>
     <version>0.0.1</version>
-    <name>cardio-common-lib</name>
+    <name>rpm-common-lib</name>
     <packaging>pom</packaging>
     <description>Spring Boot project for common libarary</description>
     <properties>

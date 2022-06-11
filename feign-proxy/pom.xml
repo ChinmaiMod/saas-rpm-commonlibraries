@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cardio-common-lib</artifactId>
-        <groupId>com.io.holter</groupId>
+        <artifactId>rpm-common-lib</artifactId>
+        <groupId>com.io.rpm</groupId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,7 +12,7 @@
     <artifactId>feign-proxy</artifactId>
 <dependencies>
     <dependency>
-        <groupId>com.io.holter</groupId>
+        <groupId>com.io.rpm</groupId>
         <artifactId>token-security</artifactId>
         <version>0.0.1</version>
     </dependency>
