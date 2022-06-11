@@ -34,7 +34,7 @@ public class SwaggerDocumentationConfiguration {
     public Docket configureControllerPackageAndConvertors() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.io.holter")).build()
+                .apis(RequestHandlerSelectors.basePackage("com.io.rpm")).build()
                 .apiInfo(apiInfo())
                 .securitySchemes(Arrays.asList(apiKey()));
     }
