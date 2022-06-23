@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 @FeignClient( name = "gateway-intregration-service",url = "http://15.207.253.86:8090/bitr/")
-//@RibbonClient(name = "apiintregration-service")
 public interface DeviceIntregrationClient {
 
     @GetMapping("devices")

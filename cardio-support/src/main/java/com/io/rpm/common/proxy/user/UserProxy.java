@@ -3,7 +3,6 @@ package com.io.rpm.common.proxy.user;
 
 import com.io.rpm.common.component.UserDto;
 import com.io.rpm.common.dto.RendorProvidorDto;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(name = "users-service")
-@RibbonClient(name = "users-service")
 public interface UserProxy {
 
 

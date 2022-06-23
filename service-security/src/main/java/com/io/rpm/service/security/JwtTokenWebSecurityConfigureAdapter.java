@@ -1,8 +1,10 @@
 package com.io.rpm.service.security;
 
+import com.google.common.collect.ImmutableList;
 import com.io.rpm.service.security.config.JwtAuthenticationEntryPoint;
 import com.io.rpm.service.security.config.JwtAuthenticationFilter;
 import com.io.rpm.service.security.config.JwtAuthenticationProvider;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
@@ -22,6 +24,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @ComponentScan(basePackages ={"com.io.rpm.service.security"})
@@ -106,7 +111,9 @@ public abstract class JwtTokenWebSecurityConfigureAdapter extends WebSecurityCon
                         HttpMethod.GET,
                         "**/swagger-resources/**",
                         "/webjars/**",
-                        "/v2/api-docs",
+                        "/swagger-ui/**",
+                        "/service/**",
+                        "/v3/api-docs/**",
                         "/css/**",
                         "/fonts/**",
                         "/static/**",
