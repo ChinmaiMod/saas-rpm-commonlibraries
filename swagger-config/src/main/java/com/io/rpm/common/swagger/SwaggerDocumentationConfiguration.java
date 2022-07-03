@@ -5,16 +5,15 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
-
-import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class SwaggerDocumentationConfiguration {
@@ -62,9 +61,9 @@ public class SwaggerDocumentationConfiguration {
     }
     private Info apiInfo() {
         return new Info()
-                .title("Human cloning API")
-                .description("API for creating clone who will fight in the clones wars")
-                .version("2.0")
+                .title("RPM API")
+                .description("API from frontend")
+                .version("3.0")
                 .contact(apiContact())
                 .license(apiLicence());
     }
@@ -77,8 +76,8 @@ public class SwaggerDocumentationConfiguration {
 
     private Contact apiContact() {
         return new Contact()
-                .name("Erwan LE TUTOUR")
-                .email("erwanletutour.elt@gmail.com")
+                .name("RPM ")
+                .email("rpm@gmail.com")
                 .url("https://github.com/ErwanLT");
     }
 }
