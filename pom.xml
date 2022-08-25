@@ -10,6 +10,7 @@
         <module>feign-proxy</module>
         <module>cardio-support</module>
 		<module>common-jpa</module>
+        <module>global-exception</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
