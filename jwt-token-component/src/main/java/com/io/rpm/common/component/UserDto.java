@@ -21,6 +21,7 @@ public class UserDto {
     private String context;
     private Long clientId;
     private Boolean passwordReset;
+    private String mobileNumber;
 
     private UserDto(String name, Long id){
         this.name=name;
