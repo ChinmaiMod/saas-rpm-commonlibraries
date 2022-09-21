@@ -45,6 +45,7 @@ public class PatientDto {
     private String signDate;
     private String insurance;
     private Boolean archive;
+    private String mobile;
 
     List<PatientLabelDto> labels;
     private String occupation;
