@@ -58,4 +58,5 @@ public class PatientDto {
     List<PatientContactDto> contacts;
     private String image;
     private Long clientId;
+    private String profilePic;
 }
