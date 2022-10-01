@@ -23,6 +23,7 @@ public interface TokenParser {
     String getDomain(String token);
     Long getUserId(String token);
     Long getClientId(String token);
+    Long getPatientId(String token);
 
     //Set<Context> getContexts(String token);
 

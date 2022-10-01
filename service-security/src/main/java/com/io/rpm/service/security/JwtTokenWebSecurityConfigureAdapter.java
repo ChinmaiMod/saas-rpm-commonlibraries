@@ -118,7 +118,7 @@ public abstract class JwtTokenWebSecurityConfigureAdapter extends WebSecurityCon
                         "/fonts/**",
                         "/static/**",
                         "/image/read/**",
-                        "/gl/**",
+                        "/gl/**","/chat/rpm-ws/info","/rpm-ws/info","/rpm-ws","/rpm-ws/**","/chat/**",
                         "/"
                 ).permitAll()
                 .requestMatchers(

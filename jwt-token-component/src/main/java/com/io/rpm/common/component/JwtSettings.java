@@ -13,6 +13,7 @@ public class JwtSettings {
     public final static String CLAIM_USERID = "userid";
     public final static String CLAIM_CLIENTID = "clientid";
     public final static String CLAIM_DOMAIN = "domain";
+    public final static String CLAIM_PATIENTID = "patientId";
     @Value("${jwt.secret}")
     private String secret;
 

@@ -22,18 +22,21 @@ public class TokenContext {
     }
     public String getUsername(){
         return tokenParser.getSubject(token());
-
     }
+
     public Long getUserId(){
         return tokenParser.getUserId(token());
-
     }
+
     public Long getClientId(){
         return tokenParser.getClientId(token());
-
     }
+
     public String getContext(){
         return tokenParser.getDomain(token());
+    }
 
+    public Long getPatientId(){
+        return tokenParser.getPatientId(token());
     }
 }

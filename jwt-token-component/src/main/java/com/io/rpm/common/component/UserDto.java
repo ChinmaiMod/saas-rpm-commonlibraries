@@ -22,6 +22,7 @@ public class UserDto {
     private Long clientId;
     private Boolean passwordReset;
     private String mobileNumber;
+    private Long patientId;
 
     private UserDto(String name, Long id){
         this.name=name;

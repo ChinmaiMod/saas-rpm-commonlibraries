@@ -40,15 +40,13 @@ public class JwtFactory implements TokenFactory {
     }
 
     @Override
-    public String generate( UserDto userDto,
-                           Collection<? extends GrantedAuthority> authorities) {
-
-
+    public String generate(UserDto userDto,Collection<? extends GrantedAuthority> authorities) {
         Claims claims = Jwts.claims();
         claims.put(JwtSettings.CLAIM_SCOPES, map(authorities));
-        claims.put(JwtSettings.CLAIM_USERID,userDto.getId());
+        claims.put(JwtSettings.CLAIM_USERID, userDto.getId());
         claims.put(JwtSettings.CLAIM_CLIENTID, userDto.getClientId());
         claims.put(JwtSettings.CLAIM_DOMAIN, userDto.getContext());
+        claims.put(JwtSettings.CLAIM_PATIENTID, userDto.getPatientId());
         Instant createdDate = now();
         Instant expirationDate = calculateExpirationDate(createdDate);
 
@@ -64,10 +62,10 @@ public class JwtFactory implements TokenFactory {
     }
 
     @Override
-    public String generateResetPassword(UserDto userDto, Long code ) {
-    String   username=  userDto.getName()+"_"+code;
+    public String generateResetPassword(UserDto userDto, Long code) {
+        String username = userDto.getName() + "_" + code;
         Claims claims = Jwts.claims();
-        claims.put(JwtSettings.CLAIM_USERID,userDto.getId());
+        claims.put(JwtSettings.CLAIM_USERID, userDto.getId());
         claims.put(JwtSettings.CLAIM_CLIENTID, userDto.getClientId());
         claims.put(JwtSettings.CLAIM_DOMAIN, userDto.getContext());
 

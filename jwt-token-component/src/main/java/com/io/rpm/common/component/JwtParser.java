@@ -74,6 +74,10 @@ public class JwtParser implements TokenParser {
         return get(token, JwtSettings.CLAIM_CLIENTID, Long.class).get();
     }
 
+    @Override
+    public Long getPatientId(String token) {
+        return get(token, JwtSettings.CLAIM_PATIENTID, Long.class).get();
+    }
 
     public <T> Optional<T> get(String token, String claim, Class<T> type) {
         return Optional.ofNullable(claimsExtractor.extract(token).get(claim, type));
