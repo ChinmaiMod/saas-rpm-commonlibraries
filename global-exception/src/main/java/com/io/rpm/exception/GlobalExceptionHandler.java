@@ -19,12 +19,26 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @Configuration
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	//CommonsMultipartResolver
+	@ExceptionHandler(MaxUploadSizeExceededException.class)
+	public ResponseEntity<ErrorResponse> handleError2(MaxUploadSizeExceededException ex, HttpHeaders headers, WebRequest request) {
+		ErrorResponse errors = new ErrorResponse();
+		errors.setTimestamp(LocalDateTime.now());
+		errors.setError("File size too large! File Size upto 10MB");
+		errors.setObj(ex.getMessage());
+		errors.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		errors.setPath(request.getContextPath());
+		log.info("handleError2 Global exception:- "+ex.getMessage());
+		return new ResponseEntity(errors, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 
 	@ExceptionHandler(CustomException.class)
 	public ResponseEntity<ErrorResponse> customException(CustomException ex, WebRequest request,HttpStatus status) {
