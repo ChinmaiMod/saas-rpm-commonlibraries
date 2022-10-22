@@ -36,4 +36,5 @@ public class UserDetails {
     private String userPic;
     private String countryCode;
     private Long patientId;
+    private Integer providerId;
 }

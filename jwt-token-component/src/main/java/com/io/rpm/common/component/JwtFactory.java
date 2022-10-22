@@ -3,6 +3,8 @@ package com.io.rpm.common.component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
@@ -16,7 +18,7 @@ import static java.util.UUID.randomUUID;
 
 @Component
 public class JwtFactory implements TokenFactory {
-
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
     static final String AUDIENCE_UNKNOWN = "unknown";
     static final String AUDIENCE_WEB = "web";
     static final String AUDIENCE_MOBILE = "mobile";
@@ -32,6 +34,7 @@ public class JwtFactory implements TokenFactory {
     }
 
     private Instant calculateExpirationDate(Instant createdDate) {
+        logger.info("getTokenExpiration : {}",settings.getTokenExpiration());
         return createdDate.plusMillis(settings.getTokenExpiration() * 1000);
     }
 
