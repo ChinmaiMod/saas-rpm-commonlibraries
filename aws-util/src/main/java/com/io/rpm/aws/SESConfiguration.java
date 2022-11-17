@@ -1,18 +1,14 @@
 package com.io.rpm.aws;
 
 import com.amazonaws.auth.InstanceProfileCredentialsProvider;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
+import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
-import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.ses.SesClient;
-
 
 @Slf4j
 @Configuration
@@ -25,11 +21,10 @@ public class SESConfiguration {
     AwsProfileManager awsProfileManager;
 
     @Bean
-    public SesClient createSES() {
+    public AmazonSimpleEmailService createSES() {
         checkCred();
-        SesClient client = SesClient.builder()
-                .region(Region.of(this.credential.getRegion()))
-                .credentialsProvider(ProfileCredentialsProvider.create())
+        AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard().withRegion(this.credential.getRegion())
+                .withCredentials(new InstanceProfileCredentialsProvider(true))
                 .build();
         return client;
     }
