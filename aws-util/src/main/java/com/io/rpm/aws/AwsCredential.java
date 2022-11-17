@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @ConfigurationProperties(prefix = "cardio.config.aws")
-public class AwsCredentidal {
+public class AwsCredential {
     private String region;
     private String accessKey;
     private String secretKey;

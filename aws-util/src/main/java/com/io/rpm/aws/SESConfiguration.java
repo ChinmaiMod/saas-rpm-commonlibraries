@@ -18,19 +18,20 @@ import software.amazon.awssdk.services.ses.SesClient;
 @Configuration
 @EnableEncryptableProperties
 @EnableAsync
-public class S3Configuration {
+public class SESConfiguration {
     @Autowired
     private AwsCredential credential;
     @Autowired
     AwsProfileManager awsProfileManager;
 
     @Bean
-    public AmazonS3 createS3() {
+    public SesClient createSES() {
         checkCred();
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion(this.credential.getRegion())
-                .withCredentials(new InstanceProfileCredentialsProvider(true))
+        SesClient client = SesClient.builder()
+                .region(Region.of(this.credential.getRegion()))
+                .credentialsProvider(ProfileCredentialsProvider.create())
                 .build();
-        return s3client;
+        return client;
     }
 
     private void checkCred(){
