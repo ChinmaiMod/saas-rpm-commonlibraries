@@ -76,6 +76,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		body.put("trac", sw.toString());
 		ex.printStackTrace();
 		log.info("handleAllExceptions Global exception:- "+ex.getMessage());
-		return new ResponseEntity<>(body, HttpStatus.OK);
+		return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
