@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -37,4 +39,8 @@ public class UserDetails {
     private String countryCode;
     private Long patientId;
     private Integer providerId;
+    private Long createdBy;
+    private LocalDateTime createdDate;
+    private Long updatedBy;
+    private LocalDateTime updatedDate;
 }

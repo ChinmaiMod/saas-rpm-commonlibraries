@@ -17,7 +17,6 @@ public class ProductDto {
     private String productType;
     private String name;
     private boolean active;
-
     private SupplierDto manufacturer;
     private String simpleDiscription;
     private String detailDiscription;

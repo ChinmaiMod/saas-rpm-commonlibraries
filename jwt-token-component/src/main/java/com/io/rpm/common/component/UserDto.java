@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -25,6 +27,10 @@ public class UserDto {
     private String mobileNumber;
     private Long patientId;
     private List<UserConsentDto> consents;
+    private Long createdBy;
+    private LocalDateTime createdDate;
+    private Long updatedBy;
+    private LocalDateTime updatedDate;
 
     private UserDto(String name, Long id){
         this.name=name;
