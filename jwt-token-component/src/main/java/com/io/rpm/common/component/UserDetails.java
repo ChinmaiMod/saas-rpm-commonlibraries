@@ -39,6 +39,9 @@ public class UserDetails {
     private String countryCode;
     private Long patientId;
     private Integer providerId;
+    private String zipCode;
+    private String prefix;
+    private String fax;
     private Long createdBy;
     private LocalDateTime createdDate;
     private Long updatedBy;
