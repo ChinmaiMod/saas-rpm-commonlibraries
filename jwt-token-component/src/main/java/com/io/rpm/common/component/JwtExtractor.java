@@ -24,11 +24,11 @@ public class JwtExtractor implements TokenExtractor {
 
     @Override
     public String extract(String header) {
-
         if (isBlank(header) || !header.startsWith(settings.getTokenPrefix().concat(" "))) {
             return null;
         }
-
         return header.substring(settings.getTokenPrefix().length() + 1);
     }
+
+
 }

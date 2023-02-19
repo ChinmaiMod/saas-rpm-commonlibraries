@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.util.ObjectUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -38,7 +39,9 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
             throws AuthenticationException, IOException, ServletException {
 
         String token = tokenExtractor.extract(request.getHeader(HttpHeaders.AUTHORIZATION));
-
+        if(ObjectUtils.isEmpty(token)){
+            token=request.getParameter("token");
+        }
         // Perform token authentication
         final Authentication authentication = getAuthenticationManager().authenticate(
                 new JwtAuthentication(

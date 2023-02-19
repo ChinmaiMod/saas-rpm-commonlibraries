@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.web.server.context.ServerSecurityContextRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
@@ -34,9 +35,13 @@ public class JwtAuthenticationFilter implements ServerSecurityContextRepository 
         ServerHttpRequest request = swe.getRequest();
         String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         String token = tokenExtractor.extract(authHeader);
-        if(StringUtils.isEmpty(token))
-            return Mono.empty();
-        else
+        if(ObjectUtils.isEmpty(token)) {
+            token=request.getQueryParams().getFirst("token");
+            if(ObjectUtils.isEmpty(token)) {
+                return Mono.empty();
+            }
+        }
+
         return this.authenticationManager.authenticate(
                 new JwtAuthentication(
                         token
