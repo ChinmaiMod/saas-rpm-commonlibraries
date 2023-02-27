@@ -39,9 +39,6 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
             throws AuthenticationException, IOException, ServletException {
 
         String token = tokenExtractor.extract(request.getHeader(HttpHeaders.AUTHORIZATION));
-        if(ObjectUtils.isEmpty(token)){
-            token=request.getParameter("token");
-        }
         // Perform token authentication
         final Authentication authentication = getAuthenticationManager().authenticate(
                 new JwtAuthentication(
@@ -58,8 +55,13 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(result);
         SecurityContextHolder.setContext(context);
+        String token=request.getParameter("token");
+        if(!ObjectUtils.isEmpty(token)){
+          response.addHeader(HttpHeaders.AUTHORIZATION,"Bearer "+token);
+        }
         chain.doFilter(request, response);
     }
+
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,

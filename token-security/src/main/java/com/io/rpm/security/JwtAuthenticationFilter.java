@@ -33,15 +33,7 @@ public class JwtAuthenticationFilter implements ServerSecurityContextRepository 
     @Override
     public Mono load(ServerWebExchange swe) {
         ServerHttpRequest request = swe.getRequest();
-        String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-        String token = tokenExtractor.extract(authHeader);
-        if(ObjectUtils.isEmpty(token)) {
-            token=request.getQueryParams().getFirst("token");
-            if(ObjectUtils.isEmpty(token)) {
-                return Mono.empty();
-            }
-        }
-
+        String token = tokenExtractor.extract(request);
         return this.authenticationManager.authenticate(
                 new JwtAuthentication(
                         token

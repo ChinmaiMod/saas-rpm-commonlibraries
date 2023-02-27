@@ -1,11 +1,11 @@
 package com.io.rpm.common.component;
 
-import org.springframework.http.server.ServletServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 
 
 public interface TokenExtractor {
 
-    String extract(ServletServerHttpRequest request);
+    String extract(ServerHttpRequest request);
 
     String extract(String header);
 

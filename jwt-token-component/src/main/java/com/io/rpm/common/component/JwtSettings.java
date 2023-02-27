@@ -22,8 +22,10 @@ public class JwtSettings {
     @Value("${link.expiration}")
     private Long linkExpireration;
 
-    @Value("${jwt.header}")
+    @Value("${jwt.header:Authorization}")
     private String tokenHeader;
+    @Value("${jwt.query.param:token}")
+    private String tokenQueryParam;
 
     @Value("${jwt.prefix}")
     private String tokenPrefix;
