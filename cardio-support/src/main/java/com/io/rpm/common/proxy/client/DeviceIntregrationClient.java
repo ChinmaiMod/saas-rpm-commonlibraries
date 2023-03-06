@@ -1,11 +1,10 @@
 package com.io.rpm.common.proxy.client;
 
 import com.io.rpm.common.component.DeviceDto;
+import com.io.rpm.common.component.study.StudyDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -30,5 +29,12 @@ public interface DeviceIntregrationClient {
             , @RequestParam(required = false) String deviceType
             , @RequestParam(required = false) Boolean availableForStudy
     );
+
+    @PostMapping("studies/startStudy")
+    ResponseEntity<Object> startStudy(@RequestHeader("Authorization") String token, @RequestBody StudyDto.Request request);
+
+
+    @GetMapping("/studies")
+    ResponseEntity<List<StudyDto.Response>> getStudy(@RequestHeader("Authorization") String token);
 
 }
