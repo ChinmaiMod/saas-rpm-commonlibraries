@@ -27,11 +27,16 @@ public class FCMService {
         logger.info("Sent message without data. Topic: " + request.getTopic() + ", " + response);
     }
 
-    public void sendMessageToToken(MessageDto request)
-            throws InterruptedException, ExecutionException {
-        Message message = getPreconfiguredMessageToToken(request);
-        String response = sendAndGetResponse(message);
-        logger.info("Sent message to token. Device token: " + request.getToken() + ", " + response);
+    public String sendMessageToToken(MessageDto request){
+        try {
+            Message message = getPreconfiguredMessageToToken(request);
+            String response = sendAndGetResponse(message);
+            logger.info("Sent message to token. Device token: " + request.getToken() + ", " + response);
+            return response;
+        }catch(Exception e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 
     private String sendAndGetResponse(Message message) throws InterruptedException, ExecutionException {

@@ -9,4 +9,7 @@ public class Constant {
     public static final String INSURANCE_DOCK="InsuranceDocks";
     public static final String DEFAULT_EMAIL="support@kavanant.com";
     public static final String PATIENT_FOLDER_PREFIX="patient";
+    public static final String CHAT_BUCKET_NAME=System.getenv("RPM_CHAT_S3_BUCKET");
+    public static final String CHAT_TEMP_FOLDER="chat_temp";
+    public static final String CHAT_FOLDER="chat_files";
 }
