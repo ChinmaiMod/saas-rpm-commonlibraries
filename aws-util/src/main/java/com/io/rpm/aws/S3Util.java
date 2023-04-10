@@ -80,6 +80,13 @@ public class S3Util {
                 delete(key);
         }
 
+        @Async
+        public void move(String sourceKey,String destinationKey, String targetBucket, String targetPath, boolean sourceDelete) {
+            s3client.copyObject(new CopyObjectRequest(bucketName, sourceKey, targetBucket, targetPath + "/" + destinationKey));
+            if (sourceDelete)
+                delete(sourceKey);
+        }
+
         public String getUrl(@NonNull String filePath) {
             Assert.notNull(filePath, "filePath must not be null");
             return String.format("https://s3-%s.amazonaws.com/%s/%s", s3client.getRegionName(), bucketName, filePath);
