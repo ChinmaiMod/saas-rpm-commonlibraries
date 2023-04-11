@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -80,10 +83,17 @@ public class FCMService {
         AndroidConfig androidConfig = getAndroidConfig(request.getTopic());
         ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
         WebpushConfig webConfig = getWebConfig(request);
+        Map<String,String> data=new HashMap<>();
+        data.put("senderId",String.valueOf(request.getSenderId()));
+        data.put("receiverId",String.valueOf(request.getReceiverId()));
+        data.put("serviceId",String.valueOf(request.getServiceId()));
+        data.put("serviceName",request.getSenderName());
+        data.put("recipientName",request.getRecipientName());
         return Message.builder()
                 .setWebpushConfig(webConfig)
                 .setApnsConfig(apnsConfig)
                 .setAndroidConfig(androidConfig)
+                .putAllData(data)
                 .setNotification(notification);
     }
 

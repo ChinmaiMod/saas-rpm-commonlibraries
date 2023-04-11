@@ -16,7 +16,12 @@ public class MessageDto {
     private String message;
     private String topic;
     private String token;
+    private Long senderId;
+    private Long receiverId;
+    private Integer serviceId;
     private List<String> tokens;
     private Map<String, String> data;
     private String image;
+    private String senderName;
+    private String recipientName;
 }
