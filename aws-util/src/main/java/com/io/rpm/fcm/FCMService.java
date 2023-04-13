@@ -87,7 +87,7 @@ public class FCMService {
         data.put("senderId",String.valueOf(request.getSenderId()));
         data.put("receiverId",String.valueOf(request.getReceiverId()));
         data.put("serviceId",String.valueOf(request.getServiceId()));
-        data.put("serviceName",request.getSenderName());
+        data.put("senderName",request.getSenderName());
         data.put("recipientName",request.getRecipientName());
         return Message.builder()
                 .setWebpushConfig(webConfig)
