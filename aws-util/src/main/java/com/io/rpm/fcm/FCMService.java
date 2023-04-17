@@ -38,7 +38,7 @@ public class FCMService {
             return response;
         }catch(Exception e){
             e.printStackTrace();
-            return e.getMessage();
+            return "Send Notification Failed:- "+e.getMessage();
         }
     }
 
