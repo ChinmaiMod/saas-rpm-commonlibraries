@@ -46,12 +46,13 @@ public class FCMService {
         return FirebaseMessaging.getInstance().sendAsync(message).get();
     }
 
-    private AndroidConfig getAndroidConfig(String topic) {
+    private AndroidConfig getAndroidConfig(MessageDto request,Map<String,String> data) {
         return AndroidConfig.builder()
-                .setTtl(Duration.ofMinutes(2).toMillis()).setCollapseKey(topic)
+                .setTtl(Duration.ofMinutes(2).toMillis()).setCollapseKey(request.getTopic())
                 .setPriority(AndroidConfig.Priority.HIGH)
+                .putAllData(data)
                 .setNotification(AndroidNotification.builder().setSound(NotificationParameter.SOUND.getValue())
-                        .setColor(NotificationParameter.COLOR.getValue()).setTag(topic).build()).build();
+                        .setColor(NotificationParameter.COLOR.getValue()).setTag(request.getTopic()).build()).build();
     }
 
     private ApnsConfig getApnsConfig(String topic) {
@@ -75,20 +76,22 @@ public class FCMService {
     }
 
     private Message.Builder getPreconfiguredMessageBuilder(MessageDto request) {
-        Notification notification = Notification
-                .builder()
-                .setTitle(request.getTitle())
-                .setBody(request.getMessage())
-                .build();
-        AndroidConfig androidConfig = getAndroidConfig(request.getTopic());
-        ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
-        WebpushConfig webConfig = getWebConfig(request);
         Map<String,String> data=new HashMap<>();
         data.put("senderId",String.valueOf(request.getSenderId()));
         data.put("receiverId",String.valueOf(request.getReceiverId()));
         data.put("serviceId",String.valueOf(request.getServiceId()));
         data.put("senderName",request.getSenderName());
         data.put("recipientName",request.getRecipientName());
+
+        Notification notification = Notification
+                .builder()
+                .setTitle(request.getTitle())
+                .setBody(request.getMessage())
+                .build();
+        AndroidConfig androidConfig = getAndroidConfig(request,data);
+        ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
+        WebpushConfig webConfig = getWebConfig(request);
+
         return Message.builder()
                 .setWebpushConfig(webConfig)
                 .setApnsConfig(apnsConfig)
