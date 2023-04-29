@@ -51,13 +51,28 @@ public class FCMService {
                 .setTtl(Duration.ofMinutes(2).toMillis()).setCollapseKey(request.getTopic())
                 .setPriority(AndroidConfig.Priority.HIGH)
                 .putAllData(data)
-                .setNotification(AndroidNotification.builder().setSound(NotificationParameter.SOUND.getValue())
-                        .setColor(NotificationParameter.COLOR.getValue()).setTag(request.getTopic()).build()).build();
+                .setNotification(AndroidNotification.builder()
+                        .setPriority(AndroidNotification.Priority.HIGH)
+                        .setSound(NotificationParameter.SOUND.getValue())
+                        .setBody(request.getMessage())
+                        .setTitle(request.getTitle())
+                        .setDefaultSound(true)
+                        .setColor(NotificationParameter.COLOR.getValue())
+                        .setTag(request.getTopic()).build()).build();
     }
 
-    private ApnsConfig getApnsConfig(String topic) {
+    private ApnsConfig getApnsConfig(MessageDto request) {
+        Map<String,Object> data=new HashMap<>();
+        data.put("senderId",String.valueOf(request.getSenderId()));
+        data.put("receiverId",String.valueOf(request.getReceiverId()));
+        data.put("serviceId",String.valueOf(request.getServiceId()));
+        data.put("senderName",request.getSenderName());
+        data.put("recipientName",request.getRecipientName());
         return ApnsConfig.builder()
-                .setAps(Aps.builder().setCategory(topic).setThreadId(topic).build()).build();
+                .setAps(Aps.builder().setContentAvailable(true).putAllCustomData(data)
+                        .setBadge(request.getMsgCount())
+                        .setAlert(ApsAlert.builder().setTitle(request.getTitle()).setBody(request.getMessage()).build())
+                        .setCategory(request.getTopic()).setThreadId(request.getTopic()).build()).build();
     }
 
     private Message getPreconfiguredMessageToToken(MessageDto request) {
@@ -89,7 +104,7 @@ public class FCMService {
                 .setBody(request.getMessage())
                 .build();
         AndroidConfig androidConfig = getAndroidConfig(request,data);
-        ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
+        ApnsConfig apnsConfig = getApnsConfig(request);
         WebpushConfig webConfig = getWebConfig(request);
 
         return Message.builder()

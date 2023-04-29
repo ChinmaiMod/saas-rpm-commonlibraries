@@ -24,4 +24,5 @@ public class MessageDto {
     private String image;
     private String senderName;
     private String recipientName;
+    private int msgCount;
 }
