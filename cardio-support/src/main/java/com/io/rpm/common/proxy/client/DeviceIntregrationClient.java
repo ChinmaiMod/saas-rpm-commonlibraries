@@ -2,6 +2,7 @@ package com.io.rpm.common.proxy.client;
 
 import com.io.rpm.common.component.DeviceDto;
 import com.io.rpm.common.component.study.StudyDto;
+import com.io.rpm.common.dto.BitrhythmEventDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,4 +38,6 @@ public interface DeviceIntregrationClient {
     @GetMapping("/studies")
     ResponseEntity<List<StudyDto.Response>> getStudy(@RequestHeader("Authorization") String token);
 
+    @GetMapping("/inboxItems/joined")
+    ResponseEntity<List<BitrhythmEventDto>> getEvent(@RequestHeader("Authorization") String token);
 }
