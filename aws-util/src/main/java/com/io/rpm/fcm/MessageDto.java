@@ -25,5 +25,4 @@ public class MessageDto {
     private String senderName;
     private String recipientName;
     private int msgCount;
-    // chat message dto
 }
