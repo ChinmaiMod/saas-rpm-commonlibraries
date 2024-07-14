@@ -55,6 +55,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(result);
         SecurityContextHolder.setContext(context);
+        
         String token=request.getParameter("token");
         if(!ObjectUtils.isEmpty(token)){
           response.addHeader(HttpHeaders.AUTHORIZATION,"Bearer "+token);

@@ -14,23 +14,23 @@ public class JwtSettings {
     public final static String CLAIM_CLIENTID = "clientid";
     public final static String CLAIM_DOMAIN = "domain";
     public final static String CLAIM_PATIENTID = "patientId";
-    @Value("${jwt.secret}")
-    private String secret;
+//    @Value("${jwt.secret}")
+    private String secret="myhol67TR";
 
-    @Value("${jwt.expiration}")
-    private Long tokenExpiration;
-    @Value("${link.expiration}")
-    private Long linkExpireration;
+//    @Value("${jwt.expiration}")
+    private  Long tokenExpiration= 604800L;
+//    @Value("${link.expiration}")
+    private  Long linkExpireration =3600L;
 
-    @Value("${jwt.header:Authorization}")
-    private String tokenHeader;
+//    @Value("${jwt.header:Authorization}")
+    private String tokenHeader="Authorization";
     @Value("${jwt.query.param:token}")
     private String tokenQueryParam;
 
-    @Value("${jwt.prefix}")
-    private String tokenPrefix;
+//    @Value("${jwt.prefix}")
+    private String tokenPrefix ="Bearer";
 
-    @Value("${jwt.issuer}")
-    private String tokenIssuer;
+//    @Value("${jwt.issuer}")
+    private String tokenIssuer= "holter.io";
 
 }

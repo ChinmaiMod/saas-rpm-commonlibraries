@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuotePdfDto {
     private String companyName;
+
     private String quoteName;
     private String companyAddress;
     private String companyWebsite;
@@ -30,7 +31,7 @@ public class QuotePdfDto {
     private String billToPhone;
     private  String shipToPhone;
     private  String email;
-
+    private String mobilephone;
     private String description;
     private Double quantity;
     private Double unitPrice;

@@ -18,7 +18,7 @@ import java.util.List;
 @Configuration
 public class SwaggerDocumentationConfiguration {
 
-    @Value("${openapi.server.url:}")
+    @Value("http://${openapi.server.url:}")
     private String url;
  /*   ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Person REST CRUD operations API in Spring-Boot 2")

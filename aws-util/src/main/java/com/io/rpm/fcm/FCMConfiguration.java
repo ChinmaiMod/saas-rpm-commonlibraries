@@ -26,6 +26,14 @@ public class FCMConfiguration {
                 .builder()
                 .setCredentials(googleCredentials)
                 .build();
+//        FirebaseApp app = null;
+//        if(FirebaseApp.getApps().isEmpty()) {
+//            app = FirebaseApp.initializeApp(firebaseOptions, "appName");
+//        }else {
+//            app = FirebaseApp.initializeApp(firebaseOptions);
+//        }
+//        
+//        return FirebaseMessaging.getInstance(app);
         FirebaseApp app = FirebaseApp.initializeApp(firebaseOptions);
         logger.info("FCM initialized {}",app.getName());
         return FirebaseMessaging.getInstance(app);

@@ -1,7 +1,8 @@
 package com.io.rpm.service.security.constants;
 
 public class Constant {
-    public static final String BUCKET_NAME=System.getenv("RPM_S3_BUCKET");
+	public static final String BUCKET_NAME="cardio-new-dev-asset";
+//    public static final String BUCKET_NAME=System.getenv("RPM_S3_BUCKET");
     public static final String DOCUMENT="documents";
     public static final String PATIENT_DOCUMENT="patient_documents";
     public static final String PATIENT_INSURANCE_DOCUMENT="patient_documents";

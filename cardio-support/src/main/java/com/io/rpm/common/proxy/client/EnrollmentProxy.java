@@ -6,10 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "client-service")
+//@FeignClient(name = "client-service", url="http://localhost:8088")
+@FeignClient(name = "client-service", contextId="enrollment")
 public interface EnrollmentProxy {
 
-
+	//used in service-provider
     @GetMapping("/enrolement/study/{studyId}")
     ResponseEntity<EnrollmentDto> getEnrollemntByStudyId(@PathVariable Long studyId);
 }
