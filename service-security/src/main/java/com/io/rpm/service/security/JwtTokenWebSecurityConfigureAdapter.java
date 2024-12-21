@@ -106,7 +106,7 @@ public abstract class JwtTokenWebSecurityConfigureAdapter extends WebSecurityCon
                 .and()
                 .addFilterAt(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // HTTP options
                 .antMatchers(
                         HttpMethod.GET,
                         "**/swagger-resources/**",
@@ -120,10 +120,10 @@ public abstract class JwtTokenWebSecurityConfigureAdapter extends WebSecurityCon
                         "/image/read/**",
                         "/gl/**","/chat/rpm-ws/info","/rpm-ws/info","/rpm-ws","/rpm-ws/**","/chat/**","/socket.io","/master/document/read/**","/document/read/**",
                         "/"
-                ).permitAll()
+                ).permitAll() //specific get requests 
                 .requestMatchers(
                         EndpointRequest.toAnyEndpoint()
-                ).permitAll()
+                ).permitAll() //springboot actuator endpoints
                 .anyRequest().authenticated();
     }
 }
